@@ -37,7 +37,6 @@ public class PracticeFormTest {
         $("#currentAddress").setValue("Some Address");
         $("#react-select-3-input").setValue("NCR").pressTab();
         $("#react-select-4-input").setValue("Delhi").pressTab();
-        $("#submit").scrollTo();
         $("#submit").click();
 
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
