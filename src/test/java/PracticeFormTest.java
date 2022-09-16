@@ -1,11 +1,7 @@
-import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -23,8 +19,6 @@ public class PracticeFormTest {
     @Test
     void successRegistration(){
 
-
-
         open("/automation-practice-form");
         $("[id=firstName]").setValue("Ivan");
         $("[id=lastName]").setValue("Ivanov");
@@ -35,7 +29,6 @@ public class PracticeFormTest {
         $("[id=dateOfBirthInput]").setValue("");
         $("[class=react-datepicker__month]").find("[role=option").click();
         $("[id=subjectsInput]").setValue("English").pressTab();
-        //$("[id=subjectsContainer]").selectOptionContainingText("English");
         $("[id=hobbiesWrapper").find(byText("Sports")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/selenide-logo-big.png"));
         $("[id=currentAddress").setValue("Something Address");
