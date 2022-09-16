@@ -1,7 +1,11 @@
+import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
+import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -11,11 +15,15 @@ public class PracticeFormTest {
     @BeforeAll
     static void setUp(){
         Configuration.baseUrl = "https://demoqa.com";
-        //Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = true;
+        Configuration.browserSize = "1920x1080";
+        Configuration.clickViaJs = true;
     }
 
     @Test
     void successRegistration(){
+
+
 
         open("/automation-practice-form");
         $("[id=firstName]").setValue("Ivan");
@@ -23,8 +31,18 @@ public class PracticeFormTest {
         $("[id=userEmail]").setValue("ivan.ivanov@test.ru");
         $("[id=genterWrapper").$(byText("Male")).click();
         $("[id=userNumber]").setValue("79221942060");
-        $("[id=dateOfBirthInput]").setValue("13 mar 1997");
-        $("[id=subjectsInput]").setValue("English");
-        //$("[id=subjectsContainer]").$(byText("English")).click();
+        $("[id=dateOfBirthInput]").clear();
+        $("[id=dateOfBirthInput]").setValue("");
+        $("[class=react-datepicker__month]").find("[role=option").click();
+        $("[id=subjectsInput]").setValue("English").pressTab();
+        //$("[id=subjectsContainer]").selectOptionContainingText("English");
+        $("[id=hobbiesWrapper").find(byText("Sports")).click();
+        $("#uploadPicture").uploadFile(new File("src/test/resources/selenide-logo-big.png"));
+        $("[id=currentAddress").setValue("Something Address");
+        $("#react-select-3-input").setValue("NCR").pressTab();
+        $("#react-select-4-input").setValue("Delhi").pressTab();
+        $("#submit").scrollTo();
+        $("#submit").click();
+
     }
 }
