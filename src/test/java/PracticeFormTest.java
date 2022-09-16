@@ -32,9 +32,9 @@ public class PracticeFormTest {
         $(".react-datepicker__month-select").selectOption("March");
         $(".react-datepicker__day--013").click();
         $("#subjectsInput").setValue("English").pressTab();
-        $("[id=hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/selenide-logo-big.png"));
-        $("[id=currentAddress").setValue("Some Address");
+        $("#currentAddress").setValue("Some Address");
         $("#react-select-3-input").setValue("NCR").pressTab();
         $("#react-select-4-input").setValue("Delhi").pressTab();
         $("#submit").scrollTo();
