@@ -6,8 +6,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest {
 
@@ -30,7 +29,7 @@ public class PracticeFormTest {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1997");
         $(".react-datepicker__month-select").selectOption("March");
-        $(".react-datepicker__day--013").click();
+        $$(".react-datepicker__day:not(.react-datepicker__day--outside-month)").findBy(text("13")).click();
         $("#subjectsInput").setValue("English").pressTab();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/selenide-logo-big.png"));
