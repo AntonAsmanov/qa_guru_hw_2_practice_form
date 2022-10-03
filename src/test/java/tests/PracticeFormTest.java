@@ -61,6 +61,7 @@ public class PracticeFormTest {
                 .checkResult("Date of Birth", birthdateDay + " " + birthdateMonth + "," + birthdateYear)
                 .checkResult("Subjects", subject)
                 .checkResult("Hobbies", hobby)
+                .checkResult("Picture", pictureName)
                 .checkResult("Address", address)
                 .checkResult("State and City", state + " " + city)
         ;
