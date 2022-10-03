@@ -4,9 +4,28 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
+import utils.DataGen;
+
 
 public class PracticeFormTest {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
+
+
+    String firstName = DataGen.firstName();
+    String lastName = DataGen.lastName();
+    String email = DataGen.email();
+    String gender = DataGen.gender();
+    String phone = DataGen.phone();
+    String birthdateYear = DataGen.birthdateYear();
+    String birthdateMonth = DataGen.birthdateMonth();
+    String birthdateDay = DataGen.birthdateDay();
+    String subject = DataGen.subject();
+    String hobby = DataGen.hobby();
+    String pictureName = DataGen.pictureName();
+    String address = DataGen.address();
+    String state = DataGen.state();
+    String city = DataGen.city(state);
+
 
     @BeforeAll
     static void setUp(){
@@ -20,32 +39,30 @@ public class PracticeFormTest {
 
         registrationFormPage
                 .openPage()
-                .setFirstName("Anton")
-                .setLastName("Asmanov")
-                .setEmail("antonasmanov@yandex.ru")
-                .setGenderWrapper("Male")
-                .setPhoneNumber("9221942060")
-                .setBirthdate("1997","March","13")
-                .setSubjects("English")
-                .setHobbies("Sports")
-                .uploadPicture("src/test/resources/selenide-logo-big.png")
-                .setAddress("Some Address")
-                .setState("NCR")
-                .setCity("Delhi")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setGenderWrapper(gender)
+                .setPhoneNumber(phone)
+                .setBirthdate(birthdateYear,birthdateMonth,birthdateDay)
+                .setSubjects(subject)
+                .setHobbies(hobby)
+                .uploadPicture(pictureName)
+                .setAddress(address)
+                .setState(state)
+                .setCity(city)
                 .submit()
 
                 .checkResultsVisible()
-                .checkResult("Student Name","Anton Asmanov")
-                .checkResult("Student Email","antonasmanov@yandex.ru")
-                .checkResult("Gender","Male")
-                .checkResult("Mobile","9221942060")
-                .checkResult("Date of Birth", "13 March,1997")
-                .checkResult("Subjects", "English")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Address", "Some Address")
-                .checkResult("State and City", "NCR Delhi")
+                .checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Student Email",email)
+                .checkResult("Gender",gender)
+                .checkResult("Mobile",phone)
+                .checkResult("Date of Birth", birthdateDay + " " + birthdateMonth + "," + birthdateYear)
+                .checkResult("Subjects", subject)
+                .checkResult("Hobbies", hobby)
+                .checkResult("Address", address)
+                .checkResult("State and City", state + " " + city)
         ;
-
-
     }
 }

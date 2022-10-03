@@ -83,7 +83,7 @@ public class RegistrationFormPage {
 
 
     public RegistrationFormPage uploadPicture(String path) {
-        $(uploadPictureButton).uploadFile(new File(path));
+        $(uploadPictureButton).uploadFromClasspath(path);
         return this;
     }
 
