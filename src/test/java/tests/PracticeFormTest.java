@@ -30,7 +30,7 @@ public class PracticeFormTest {
     @BeforeAll
     static void setUp(){
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
     }
 
